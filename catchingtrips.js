@@ -1,8 +1,15 @@
-// to create a transport app for trains
-// use jumbotron create grid.
-// header for name of transport app, row 1 column 1-transport provider, col 2-dest city , col 3 departure time, col 4-travel time, col 5- arrival in dest city, col 6 interval, col 7 next depart time 
+// Steps to complete:
 
-
+// 1. Initialize Firebase
+// create firebase database variable
+// Ask how to make frequency calculate in minutes
+// Learn how moment.js works and incorporate
+// create variables for carrier name, destination, departure and frequency 
+// 2. Create button for adding new employees - then update the html + update the database
+// 3. Create a way to retrieve employees from the employee database.
+// 4. Create a way to calculate the months worked. Using difference between start and current time.
+//    Then use moment.js formatting to set difference in months.
+// 5. Calculate Total billed
 
 
 
@@ -16,4 +23,14 @@
     messagingSenderId: "212042728114"
   };
   firebase.initializeApp(config);
-var database = firebas.database();
+
+
+  var database = firebas.database();
+
+
+
+var carrierName = $("#carrier-name-input").val().trim();
+var destination = $("#destination-input").val().trim();
+var initialDeparture =$("#initial-departure-input").val().trim();
+var frequency = $("#frequency-input").val().trim();
+
