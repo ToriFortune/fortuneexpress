@@ -50,7 +50,7 @@
     };
 
     // upload new carrier data to firebase database
-    database.ref().push(newCar);
+    database.ref().push(newCarrier);
 
     console.log(newCarrier.carrier);
     console.log(newCarrier.destination);
@@ -89,7 +89,8 @@ console.log(destAddress);
 console.log(depTime);
 console.log(carrierFrequency);
 
-    };
+
+    });
 
 
 
@@ -116,41 +117,3 @@ console.log(carrierFrequency);
 
 
 
-
-
-
-
-    
-    
-    
-    //   // Employee Info
-    //   console.log(empName);
-    //   console.log(empRole);
-    //   console.log(empStart);
-    //   console.log(empRate);
-    
-    //   // Prettify the employee start
-    //   var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
-    
-    //   // Calculate the months worked using hardcore math
-    //   // To calculate the months worked
-    //   var empMonths = moment().diff(moment(empStart, "X"), "months");
-    //   console.log(empMonths);
-    
-    //   // Calculate the total billed rate
-    //   var empBilled = empMonths * empRate;
-    //   console.log(empBilled);
-    
-    //   // Create the new row
-    //   var newRow = $("<tr>").append(
-    //     $("<td>").text(empName),
-    //     $("<td>").text(empRole),
-    //     $("<td>").text(empStartPretty),
-    //     $("<td>").text(empMonths),
-    //     $("<td>").text(empRate),
-    //     $("<td>").text(empBilled)
-    //   );
-    
-    //   // Append the new row to the table
-    //   $("#employee-table > tbody").append(newRow);
-    // });
