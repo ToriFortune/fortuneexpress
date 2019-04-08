@@ -26,11 +26,131 @@
 
 
   var database = firebas.database();
+  
+
+  // button to add new carrier
+
+  $("#add-carrier-btn").on("click", function(event) {
+    event.preventDefault();
 
 
 
-var carrierName = $("#carrier-name-input").val().trim();
-var destination = $("#destination-input").val().trim();
-var initialDeparture =$("#initial-departure-input").val().trim();
-var frequency = $("#frequency-input").val().trim();
+    // grab user input of new carrier
+    var carrierName = $("#carrier-name-input").val().trim();
+    var destAddress = $("#destination-input").val().trim();
+    var depTime =$("#initial-departure-input").val().trim();
+    var carrierFrequency = $("#frequency-input").val().trim();
 
+  // local object to hold carrier data
+    var newCarrier ={
+      carrier: carrierName,
+      destination:destAddress,
+      departure:depTime,
+      frequency:carrierFrequency,
+    };
+
+    // upload new carrier data to firebase database
+    database.ref().push(newCar);
+
+    console.log(newCarrier.carrier);
+    console.log(newCarrier.destination);
+    console.log(newCarrier.departure);
+    console.log(newCarrier.frequency; 
+    
+      // alert user when new data is entered
+    alert("New Carrier successfully added");
+
+
+    // clear out text inputed
+    $("#carrier-name-input").val("");
+    $("#destination-input").val("");
+    $("#initial-departure-input").val("");
+    $("#frequency-input").val("");
+
+
+
+  });
+    
+      
+   
+    // 3. Create Firebase event for adding new carrier  to the database and a row in the html when a new carrier has been added.
+
+    
+    database.ref().on("child_added", function(childSnapshot) {
+      console.log(childSnapshot.val());
+ 
+  // Store everything into a variable.
+      var carrierName = childSnapshot.val().carrier;
+      var destAddress = childSnapshot.val().destination;
+      var depTime = childSnapshot.val().departure;
+      var carrierFrequency = childSnapshot.val().frequency;
+console.log(carrierName);
+console.log(destAddress);
+console.log(depTime);
+console.log(carrierFrequency);
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    //   // Employee Info
+    //   console.log(empName);
+    //   console.log(empRole);
+    //   console.log(empStart);
+    //   console.log(empRate);
+    
+    //   // Prettify the employee start
+    //   var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+    
+    //   // Calculate the months worked using hardcore math
+    //   // To calculate the months worked
+    //   var empMonths = moment().diff(moment(empStart, "X"), "months");
+    //   console.log(empMonths);
+    
+    //   // Calculate the total billed rate
+    //   var empBilled = empMonths * empRate;
+    //   console.log(empBilled);
+    
+    //   // Create the new row
+    //   var newRow = $("<tr>").append(
+    //     $("<td>").text(empName),
+    //     $("<td>").text(empRole),
+    //     $("<td>").text(empStartPretty),
+    //     $("<td>").text(empMonths),
+    //     $("<td>").text(empRate),
+    //     $("<td>").text(empBilled)
+    //   );
+    
+    //   // Append the new row to the table
+    //   $("#employee-table > tbody").append(newRow);
+    // });
