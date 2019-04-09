@@ -4,13 +4,11 @@
 // create firebase database variable
 // Ask how to make frequency calculate in minutes
 // Learn how moment.js works and incorporate
-// create variables for carrier name, destination, departure and frequency 
-// 2. Create button for adding new employees - then update the html + update the database
-// 3. Create a way to retrieve employees from the employee database.
-// 4. Create a way to calculate the months worked. Using difference between start and current time.
-//    Then use moment.js formatting to set difference in months.
-// 5. Calculate Total billed
-
+// create variables for carrier name, destination, initial departure and frequency 
+// 2. Create button for adding new carrier to be updated in html and firbase database
+// 3. Create a way to pull carrier information from database.
+// 4. How is the next departure time calcuated?
+//    
 
 
   // Initialize Firebase
@@ -25,7 +23,7 @@
   firebase.initializeApp(config);
 
 
-  var database = firebas.database();
+  var database = firebase.database();
   
 
   // button to add new carrier
@@ -38,15 +36,17 @@
     // grab user input of new carrier
     var carrierName = $("#carrier-name-input").val().trim();
     var destAddress = $("#destination-input").val().trim();
-    var depTime =$("#initial-departure-input").val().trim();
+    var iniDepTime =$("#initial-departure-input").val().trim();
     var carrierFrequency = $("#frequency-input").val().trim();
+    
 
   // local object to hold carrier data
     var newCarrier ={
       carrier: carrierName,
       destination:destAddress,
-      departure:depTime,
       frequency:carrierFrequency,
+      departure:iniDepTime,
+      
     };
 
     // upload new carrier data to firebase database
@@ -82,12 +82,27 @@
   // Store everything into a variable.
       var carrierName = childSnapshot.val().carrier;
       var destAddress = childSnapshot.val().destination;
-      var depTime = childSnapshot.val().departure;
+      var iniDepTime = childSnapshot.val().departure;
       var carrierFrequency = childSnapshot.val().frequency;
+
+
 console.log(carrierName);
 console.log(destAddress);
-console.log(depTime);
+console.log(iniDepTime);
 console.log(carrierFrequency);
+
+var nextDep = iniDepTime * carrierFrequency;
+console.log(nextDep);
+var newRow = $("<tr>").append(
+  $("<td>").text(carrierName),
+  $("<td>").text(destAddress),
+  $("<td>").text(carrierFrequency),
+  $("<td>").text(iniDepTime),
+  $("<td>").text(nextDep),
+  
+);
+
+$("#carrier-table > tbody").append(newRow);
 
 
     });
