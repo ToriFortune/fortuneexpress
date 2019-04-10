@@ -20,6 +20,7 @@
     storageBucket: "project-1-5dcbc.appspot.com",
     messagingSenderId: "212042728114"
   };
+  console.log(config);
   firebase.initializeApp(config);
 
 
@@ -48,14 +49,14 @@
       departure:iniDepTime,
       
     };
-
+console.log(newCarrier);
     // upload new carrier data to firebase database
     database.ref().push(newCarrier);
 
     console.log(newCarrier.carrier);
     console.log(newCarrier.destination);
     console.log(newCarrier.departure);
-    console.log(newCarrier.frequency; 
+    console.log(newCarrier.frequency); 
     
       // alert user when new data is entered
     alert("New Carrier successfully added");
