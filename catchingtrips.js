@@ -78,7 +78,7 @@ console.log(newCarrier);
 
     
     database.ref().on("child_added", function(childSnapshot) {
-      console.log(childSnapshot.val());
+      console.log(childSnapshot.val().carrierName);
  
   // Store everything into a variable.
       var carrierName = childSnapshot.val().carrier;
@@ -108,8 +108,11 @@ $("#carrier-table > tbody").append(newRow);
 
     });
 
+    $("#reset").on("click", function() {
 
-
+      alert("New Carrier successfully added");
+    });
+    
 
 
 
